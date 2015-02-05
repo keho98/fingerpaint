@@ -9,11 +9,12 @@
 /* Begin PBXBuildFile section */
 		D22839951A82011F00855FDC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839941A82011F00855FDC /* main.m */; };
 		D22839981A82011F00855FDC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839971A82011F00855FDC /* AppDelegate.m */; };
-		D228399B1A82011F00855FDC /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D228399A1A82011F00855FDC /* ViewController.m */; };
-		D228399E1A82011F00855FDC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D228399C1A82011F00855FDC /* Main.storyboard */; };
 		D22839A01A82011F00855FDC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D228399F1A82011F00855FDC /* Images.xcassets */; };
 		D22839A31A82011F00855FDC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = D22839A11A82011F00855FDC /* LaunchScreen.xib */; };
 		D22839AF1A82011F00855FDC /* TouchTrackerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839AE1A82011F00855FDC /* TouchTrackerTests.m */; };
+		D22839BA1A82073000855FDC /* KHOLine.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839B91A82073000855FDC /* KHOLine.m */; };
+		D22839BD1A82076D00855FDC /* KHODrawView.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839BC1A82076D00855FDC /* KHODrawView.m */; };
+		D22839C01A82079F00855FDC /* KHODrawViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D22839BF1A82079F00855FDC /* KHODrawViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,14 +33,17 @@
 		D22839941A82011F00855FDC /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		D22839961A82011F00855FDC /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D22839971A82011F00855FDC /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		D22839991A82011F00855FDC /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D228399A1A82011F00855FDC /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
-		D228399D1A82011F00855FDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D228399F1A82011F00855FDC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D22839A21A82011F00855FDC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		D22839A81A82011F00855FDC /* TouchTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TouchTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D22839AD1A82011F00855FDC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D22839AE1A82011F00855FDC /* TouchTrackerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TouchTrackerTests.m; sourceTree = "<group>"; };
+		D22839B81A82073000855FDC /* KHOLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHOLine.h; sourceTree = "<group>"; };
+		D22839B91A82073000855FDC /* KHOLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHOLine.m; sourceTree = "<group>"; };
+		D22839BB1A82076D00855FDC /* KHODrawView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHODrawView.h; sourceTree = "<group>"; };
+		D22839BC1A82076D00855FDC /* KHODrawView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHODrawView.m; sourceTree = "<group>"; };
+		D22839BE1A82079F00855FDC /* KHODrawViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KHODrawViewController.h; sourceTree = "<group>"; };
+		D22839BF1A82079F00855FDC /* KHODrawViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KHODrawViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,11 +85,14 @@
 		D22839911A82011F00855FDC /* TouchTracker */ = {
 			isa = PBXGroup;
 			children = (
+				D22839BE1A82079F00855FDC /* KHODrawViewController.h */,
+				D22839BF1A82079F00855FDC /* KHODrawViewController.m */,
 				D22839961A82011F00855FDC /* AppDelegate.h */,
 				D22839971A82011F00855FDC /* AppDelegate.m */,
-				D22839991A82011F00855FDC /* ViewController.h */,
-				D228399A1A82011F00855FDC /* ViewController.m */,
-				D228399C1A82011F00855FDC /* Main.storyboard */,
+				D22839B81A82073000855FDC /* KHOLine.h */,
+				D22839B91A82073000855FDC /* KHOLine.m */,
+				D22839BB1A82076D00855FDC /* KHODrawView.h */,
+				D22839BC1A82076D00855FDC /* KHODrawView.m */,
 				D228399F1A82011F00855FDC /* Images.xcassets */,
 				D22839A11A82011F00855FDC /* LaunchScreen.xib */,
 				D22839921A82011F00855FDC /* Supporting Files */,
@@ -199,7 +206,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D228399E1A82011F00855FDC /* Main.storyboard in Resources */,
 				D22839A31A82011F00855FDC /* LaunchScreen.xib in Resources */,
 				D22839A01A82011F00855FDC /* Images.xcassets in Resources */,
 			);
@@ -219,8 +225,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D228399B1A82011F00855FDC /* ViewController.m in Sources */,
+				D22839C01A82079F00855FDC /* KHODrawViewController.m in Sources */,
+				D22839BD1A82076D00855FDC /* KHODrawView.m in Sources */,
 				D22839981A82011F00855FDC /* AppDelegate.m in Sources */,
+				D22839BA1A82073000855FDC /* KHOLine.m in Sources */,
 				D22839951A82011F00855FDC /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -244,14 +252,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		D228399C1A82011F00855FDC /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D228399D1A82011F00855FDC /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		D22839A11A82011F00855FDC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
