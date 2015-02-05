@@ -15,6 +15,8 @@
 
 @implementation KHODrawViewController
 
+NSString * const kDataPath = @"lineData";
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -28,6 +30,13 @@
 - (void)loadView
 {
     self.view = [[KHODrawView alloc] initWithFrame:CGRectZero];
+}
+
+- (void)saveData
+{
+     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
+    NSString *filePath = [documentsDirectoryPath stringByAppendingPathComponent:kDataPath];
 }
 
 /*
