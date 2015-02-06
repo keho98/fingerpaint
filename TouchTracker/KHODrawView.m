@@ -11,9 +11,6 @@
 
 @interface KHODrawView ()
 
-@property (nonatomic, strong) NSMutableDictionary *linesInProgress;
-@property (nonatomic, strong) NSMutableArray *finishedLines;
-
 @end
 
 @implementation KHODrawView

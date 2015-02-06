@@ -10,4 +10,7 @@
 
 @interface KHODrawViewController : UIViewController
 
+- (void)saveDataFromView;
+- (void)loadDataFromView;
+
 @end

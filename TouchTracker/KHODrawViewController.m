@@ -15,11 +15,13 @@
 
 @implementation KHODrawViewController
 
-NSString * const kDataPath = @"lineData";
+NSString * const kFinishedLinesData = @"finishedLinesData";
+NSString * const kLinesInProgressData = @"linesInProgressData";
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    [self loadDataFromView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -32,11 +34,24 @@ NSString * const kDataPath = @"lineData";
     self.view = [[KHODrawView alloc] initWithFrame:CGRectZero];
 }
 
-- (void)saveData
+- (void)saveDataFromView
 {
-     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectoryPath = [paths objectAtIndex:0];
-    NSString *filePath = [documentsDirectoryPath stringByAppendingPathComponent:kDataPath];
+    NSMutableArray *finishedLines = [((KHODrawView *)self.view).finishedLines copy];
+    NSData *finishedLinesData = [NSKeyedArchiver archivedDataWithRootObject:finishedLines];
+    [[NSUserDefaults standardUserDefaults] setObject:finishedLinesData forKey:kFinishedLinesData];
+    
+    NSMutableDictionary *linesInProgress = [((KHODrawView *)self.view).linesInProgress copy];
+    NSData *linesInProgressData = [NSKeyedArchiver archivedDataWithRootObject:linesInProgress];
+    [[NSUserDefaults standardUserDefaults] setObject:linesInProgressData forKey:kLinesInProgressData];
+}
+
+- (void)loadDataFromView
+{
+    NSData *finishedLinesData = [[NSUserDefaults standardUserDefaults] objectForKey:kFinishedLinesData];
+    ((KHODrawView *)self.view).finishedLines = [NSMutableArray arrayWithArray:[NSKeyedUnarchiver unarchiveObjectWithData:finishedLinesData]];
+    
+    NSData *linesInProgressData = [[NSUserDefaults standardUserDefaults] objectForKey:kLinesInProgressData];
+    ((KHODrawView *)self.view).linesInProgress = [NSMutableDictionary dictionaryWithDictionary: [NSKeyedUnarchiver unarchiveObjectWithData:linesInProgressData]];
 }
 
 /*
