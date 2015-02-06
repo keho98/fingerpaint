@@ -8,7 +8,7 @@
 
 @import UIKit;
 
-@interface KHOLine : NSObject
+@interface KHOLine : NSObject <NSCoding>
 
 @property (nonatomic) CGPoint begin;
 @property (nonatomic) CGPoint end;

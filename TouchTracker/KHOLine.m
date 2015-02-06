@@ -10,4 +10,14 @@
 
 @implementation KHOLine
 
+- (instancetype)initWithCoder:(NSCoder *)aDecoder
+{
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    
+}
+
 @end

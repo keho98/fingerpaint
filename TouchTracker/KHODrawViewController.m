@@ -37,12 +37,16 @@ NSString * const kLinesInProgressData = @"linesInProgressData";
 - (void)saveDataFromView
 {
     NSMutableArray *finishedLines = [((KHODrawView *)self.view).finishedLines copy];
-    NSData *finishedLinesData = [NSKeyedArchiver archivedDataWithRootObject:finishedLines];
-    [[NSUserDefaults standardUserDefaults] setObject:finishedLinesData forKey:kFinishedLinesData];
+    if (finishedLines) {
+        NSData *finishedLinesData = [NSKeyedArchiver archivedDataWithRootObject:finishedLines];
+        [[NSUserDefaults standardUserDefaults] setObject:finishedLinesData forKey:kFinishedLinesData];
+    }
     
     NSMutableDictionary *linesInProgress = [((KHODrawView *)self.view).linesInProgress copy];
-    NSData *linesInProgressData = [NSKeyedArchiver archivedDataWithRootObject:linesInProgress];
-    [[NSUserDefaults standardUserDefaults] setObject:linesInProgressData forKey:kLinesInProgressData];
+    if (linesInProgress) {
+        NSData *linesInProgressData = [NSKeyedArchiver archivedDataWithRootObject:linesInProgress];
+        [[NSUserDefaults standardUserDefaults] setObject:linesInProgressData forKey:kLinesInProgressData];
+    }
 }
 
 - (void)loadDataFromView
