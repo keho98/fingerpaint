@@ -11,6 +11,8 @@
 
 @interface KHODrawView ()
 
+@property (nonatomic, weak) KHOLine *selectedLine;
+
 @end
 
 @implementation KHODrawView
@@ -30,6 +32,12 @@
         doubleTapRecognizer.numberOfTapsRequired = 2;
         doubleTapRecognizer.delaysTouchesBegan = YES;
         [self addGestureRecognizer:doubleTapRecognizer];
+        
+        UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                        action:@selector(tap:)];
+        tapRecognizer.delaysTouchesBegan = YES;
+        [tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
+        [self addGestureRecognizer:tapRecognizer];
     }
     
     return self;
@@ -56,6 +64,11 @@
     [[UIColor redColor] set];
     for (NSValue *key in self.linesInProgress) {
         [self strokeLine:self.linesInProgress[key]];
+    }
+    
+    if (self.selectedLine) {
+        [[UIColor greenColor] set];
+        [self strokeLine:self.selectedLine];
     }
 }
 
@@ -116,6 +129,11 @@
     [self.linesInProgress removeAllObjects];
     [self.finishedLines removeAllObjects];
     [self setNeedsDisplay];
+}
+
+- (void)tap:(UIGestureRecognizer *)gr
+{
+    
 }
 
 @end
