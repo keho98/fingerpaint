@@ -38,9 +38,18 @@
         tapRecognizer.delaysTouchesBegan = YES;
         [tapRecognizer requireGestureRecognizerToFail:doubleTapRecognizer];
         [self addGestureRecognizer:tapRecognizer];
+        
+        UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                                          action:@selector(longPress:)];
+        [self addGestureRecognizer:longPressRecognizer];
     }
     
     return self;
+}
+
+- (BOOL)canBecomeFirstResponder
+{
+    return YES;
 }
 
 - (void)strokeLine:(KHOLine *)line
@@ -133,7 +142,56 @@
 
 - (void)tap:(UIGestureRecognizer *)gr
 {
+    CGPoint point = [gr locationInView:self];
+    self.selectedLine = [self lineAtPoint:point];
+    UIMenuController *menu = [UIMenuController sharedMenuController];
     
+    if (self.selectedLine) {
+        [self becomeFirstResponder];
+        
+        UIMenuItem *deleteItem = [[UIMenuItem alloc] initWithTitle:@"Delete"
+                                                            action:@selector(deleteLine:)];
+        menu.menuItems = @[deleteItem];
+        
+        [menu setTargetRect:CGRectMake(point.x, point.y, 2, 2) inView:self];
+        [menu setMenuVisible:YES animated:YES];
+    } else {
+        if ([menu isMenuVisible]) {
+            [menu setMenuVisible:NO animated:YES];
+        }
+    }
+    
+    [self setNeedsDisplay];
+}
+
+- (void)longPress:(UIGestureRecognizer *)gr
+{
+    [self setNeedsDisplay];
+}
+
+- (KHOLine *)lineAtPoint:(CGPoint)p
+{
+    for (KHOLine *l in self.finishedLines) {
+        CGPoint start = l.begin;
+        CGPoint end = l.end;
+        for (float t = 0.0; t <= 1.0; t += 0.05) {
+            float x = start.x + t * (end.x - start.x);
+            float y = start.y + t * (end.y - start.y);
+            
+            if (hypot(x - p.x, y - p.y) < 20.0) {
+                return l;
+            }
+        }
+    }
+    
+    return nil;
+}
+
+- (void)deleteLine:(id)sender
+{
+    [self.finishedLines removeObject:self.selectedLine];
+    
+    [self setNeedsDisplay];
 }
 
 @end
